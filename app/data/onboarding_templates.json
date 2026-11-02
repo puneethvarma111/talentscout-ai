@@ -1,0 +1,15 @@
+{
+  "engineering": [
+    {"task": "Create accounts and grant least-privilege access", "owner": "IT", "due": "Before day 1"},
+    {"task": "Prepare laptop, development environment, and repository access", "owner": "IT", "due": "Before day 1"},
+    {"task": "Schedule team introductions and role orientation", "owner": "Manager", "due": "Week 1"},
+    {"task": "Review architecture, coding standards, and release process", "owner": "Buddy", "due": "Week 1"},
+    {"task": "Agree on first 30-day goals", "owner": "Manager", "due": "Week 1"}
+  ],
+  "general": [
+    {"task": "Create accounts and confirm required access", "owner": "IT", "due": "Before day 1"},
+    {"task": "Complete HR paperwork and policy acknowledgement", "owner": "HR", "due": "Day 1"},
+    {"task": "Schedule team introductions and role orientation", "owner": "Manager", "due": "Week 1"},
+    {"task": "Agree on first 30-day goals", "owner": "Manager", "due": "Week 1"}
+  ]
+}

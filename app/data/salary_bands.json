@@ -1,0 +1,26 @@
+{
+  "software_engineer": {
+    "title": "Software engineer (India, indicative LPA)",
+    "min_lpa": 8,
+    "max_lpa": 28,
+    "notes": "Band varies by city tier, stack depth, and company stage. Confirm with finance before offering."
+  },
+  "frontend_engineer": {
+    "title": "Frontend engineer (India, indicative LPA)",
+    "min_lpa": 7,
+    "max_lpa": 24,
+    "notes": "React/Next.js and product-facing experience typically sit mid-to-upper band."
+  },
+  "data_engineer": {
+    "title": "Data engineer (India, indicative LPA)",
+    "min_lpa": 10,
+    "max_lpa": 30,
+    "notes": "Cloud warehouse and streaming skills push toward the upper range."
+  },
+  "general": {
+    "title": "General professional role (indicative)",
+    "min_lpa": 6,
+    "max_lpa": 20,
+    "notes": "Use as a conversation starter only; local market and level must be validated."
+  }
+}
