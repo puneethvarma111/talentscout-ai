@@ -179,7 +179,7 @@ def screen_resume(s: CopilotSession, resume_text: str = "", job_description: str
     must_pct = sum(r["met"] for r in must_rows) / len(must_rows)
     nice_pct = (sum(r["met"] for r in nice_rows) / len(nice_rows)) if nice_rows else 1
     exp_ok = 1.0 if not min_years else (min(1.0, (years or 0) / min_years))
-    score = round(must_pct * 60 + nice_pct * 15 + exp_ok * 25)
+    score = round(must_pct * 60 + nice_pct * 15 + exp_ok * 25) if nice_rows else round(must_pct * 75 + exp_ok * 25)
     rec = "Advance to interview" if score >= 75 and must_pct >= 0.75 else "Hold — clarify gaps in screen call" if score >= 50 else "Not a match on stated requirements"
     gaps = [r["requirement"] for r in must_rows if not r["met"]]
     probes = [f"The resume doesn't mention {g}. Ask: 'Tell me about any hands-on work with {g}.'" for g in gaps[:3]]
@@ -188,7 +188,7 @@ def screen_resume(s: CopilotSession, resume_text: str = "", job_description: str
     return {
         "summary": f"Screened resume: {score}/100",
         "data": {
-            "score": score, "recommendation": rec, "breakdown": {"must_have": f"{must_pct:.0%} (60 pts)", "nice_to_have": f"{nice_pct:.0%} (15 pts)", "experience": f"{years or 'not stated'} yrs vs {min_years or 'none'} required (25 pts)"},
+            "score": score, "recommendation": rec, "breakdown": {"must_have": f"{must_pct:.0%} (60 pts)", "nice_to_have": f"{nice_pct:.0%} (15 pts)" if nice_rows else "none specified (weight moved to must-haves)", "experience": f"{years or 'not stated'} yrs vs {min_years or 'none'} required (25 pts)"},
             "requirements": rows, "gaps": gaps, "interview_probes": probes,
             "sources": {"resume": resume_doc.name if resume_doc and not resume_text else "pasted text", "jd": jd_doc.name if jd_doc and not job_description else ("pasted text" if jd else "stated skills")},
             "caveat": "Keyword evidence only; contact details redacted. A human makes the decision.",

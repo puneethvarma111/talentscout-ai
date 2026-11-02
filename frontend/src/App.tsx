@@ -2,7 +2,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { fetchHealth } from './api/client'
 import { ChatPanel } from './components/ChatPanel'
 import { ContextRail } from './components/ContextRail'
-import { Header } from './components/Header'
+import { CopilotView } from './components/copilot/CopilotView'
+import { Header, type View } from './components/Header'
 import type { RailTab } from './constants/quickPrompts'
 import type { SessionState } from './types/api'
 import './styles/app.css'
@@ -23,6 +24,7 @@ function App() {
   const [useSupervisor, setUseSupervisor] = useState(true)
   const [activeTab, setActiveTab] = useState<RailTab>('shortlist')
   const [notice, setNotice] = useState('')
+  const [view, setView] = useState<View>('copilot')
   const [health, setHealth] = useState<'connecting' | 'ok' | 'error'>('connecting')
 
   useEffect(() => {
@@ -44,7 +46,12 @@ function App() {
 
   return (
     <div className="app-shell">
-      <Header health={health} onNewChat={newChat} />
+      <Header health={health} view={view} onViewChange={setView} onNewChat={newChat} />
+      {view === 'copilot' ? (
+        <main className="workspace single">
+          <CopilotView key={sessionKey} />
+        </main>
+      ) : (
       <main className="workspace">
         <ChatPanel
           key={sessionKey}
@@ -57,6 +64,7 @@ function App() {
         />
         <ContextRail activeTab={activeTab} onTabChange={setActiveTab} session={session} />
       </main>
+      )}
     </div>
   )
 }
