@@ -20,6 +20,7 @@ from app.agent import run_agent
 from app.session import get_session
 from app.store import list_candidates, set_stage
 from app.supervisor_graph import run_supervisor
+from app.copilot.router import router as copilot_router
 
 BASE = Path(__file__).parent
 ROOT = BASE.parent
@@ -41,6 +42,8 @@ app.add_middleware(
 )
 if not FRONTEND_DIST.is_dir():
     app.mount("/static", StaticFiles(directory=BASE / "static"), name="static")
+
+app.include_router(copilot_router)
 
 whisper_model = None
 last_candidates: list[dict[str, Any]] = []
