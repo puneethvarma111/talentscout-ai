@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.DS_Store
+data/*.sqlite3
+data/*.sqlite3-*
+reports/*.md
+reports/*.pdf
+.streamlit/secrets.toml
+frontend/.vite/
+*.egg-info/
+.pytest_cache/
+.coverage

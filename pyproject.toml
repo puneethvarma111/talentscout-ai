@@ -1,0 +1,34 @@
+[project]
+name = "local-research-ai"
+version = "0.1.0"
+description = "Local Deep Research AI Agent using LangChain and Ollama"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  "pydantic>=2.8",
+  "pydantic-settings>=2.4",
+  "httpx>=0.27",
+  "beautifulsoup4>=4.12",
+  "python-dotenv>=1.0",
+  "streamlit>=1.40",
+  "langchain>=0.3",
+  "langchain-core>=0.3",
+  "langchain-ollama>=0.2",
+  "ddgs>=9.0",
+  "fpdf2>=2.8",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.24",
+  "respx>=0.21",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.uv]
+package = false
